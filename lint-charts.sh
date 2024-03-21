@@ -27,7 +27,6 @@ else
         authorization-svc
         fspiop-api-svc
         logging-svc
-        mfi-account-oracle-svc
         participants-svc
         platform-configuration-svc
         quoting-svc
@@ -43,6 +42,7 @@ else
         thirdparty/mongo-express
         thirdparty/mongodb
         thirdparty/redis
+        thirdparty/longhorn
     )
 fi
 
