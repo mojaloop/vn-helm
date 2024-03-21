@@ -83,12 +83,12 @@ env:
   kafka_logs_topic: logs
   kafka_audits_topic: audits
   mongo_url: mongodb://root:mongodb@mongodb:27017
-  platform_config_base_svc_url: http://platform-configuration-svc:3100
-  auth_z_svc_baseurl: http://authorization-svc:3202
-  auth_n_svc_baseurl: http://authentication-svc:3201
+  platform_config_base_svc_url: http://$release_name-platform-configuration-svc:3100
+  auth_z_svc_baseurl: http://$release_name-authorization-svc:3202
+  auth_n_svc_baseurl: http://$release_name-authentication-svc:3201
   auth_n_token_issuer_name: mojaloop.vnext.dev.default_issuer
   auth_n_token_audience: mojaloop.vnext.dev.default_audience
-  participants_svc_url: http://participants-svc:3010
+  participants_svc_url: http://$release_name-participants-svc:3010
 
 
 extraEnvs: {}
@@ -99,17 +99,17 @@ extraEnvs: {}
 # - name: KAFKA_AUDITS_TOPIC
 #   value: audits
 # - name: PLATFORM_CONFIG_BASE_SVC_URL
-#   value: http://platform-configuration-svc:3100
+#   value: http://$release_name-platform-configuration-svc:3100
 # - name: AUTH_Z_SVC_BASEURL
-#   value: http://authorization-svc:3202
+#   value: http://$release_name-authorization-svc:3202
 # - name: AUTH_N_SVC_BASEURL
-#   value: http://authentication-svc:3201
+#   value: http://$release_name-authentication-svc:3201
 # - name: AUTH_N_TOKEN_ISSUER_NAME
 #   value: mojaloop.vnext.dev.default_issuer
 # - name: AUTH_N_TOKEN_AUDIENCE
 #   value: mojaloop.vnext.dev.default_audience
 # - name: PARTICIPANTS_SVC_URL
-#   value: http://participants-svc:3010
+#   value: http://$release_name-participants-svc:3010
 
 
 initContainers: |
@@ -130,4 +130,4 @@ initContainers: |
         echo participants-svc ok!;
     env:
       - name: PARTICIPANTS_SVC_URL
-        value: http://participants-svc:3010
+        value: http://$release_name-participants-svc:3010

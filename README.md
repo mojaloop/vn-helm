@@ -11,12 +11,12 @@ Deployment Instructions
 2. Clone the repo in your local
 3. Deploy the thirdparty charts one by one
    cd vn-helm
-   helm install elasticsearch thirdparty/elasticsearch -n monitoring --create-namespace
-   helm install console thirdparty/console -n mojaloop --create-namespace
-   helm install kafka thirdparty/kafka -n mojaloop
+   helm install kafka thirdparty/kafka -n mojaloop --create-namespace   
+   helm install console thirdparty/console -n mojaloop    
    helm install mongodb thirdparty/mongodb -n mojaloop
-   helm install mongoexpress thirdparty/mongoexpress -n mojaloop
+   helm install mongoexpress thirdparty/mongo-express -n mojaloop
    helm install redis thirdparty/redis -n mojaloop
+   helm install elasticsearch thirdparty/elasticsearch -n monitoring --create-namespace
 4. Deploy the vnext charts 
    helm dep up vnext/
    helm install vnext vnext/ -n mojaloop
