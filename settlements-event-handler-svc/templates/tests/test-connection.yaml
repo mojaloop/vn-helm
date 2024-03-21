@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "settlements-event-handler-svc.fullname" . }}-test-connection"
+  labels:
+    {{- include "settlements-event-handler-svc.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "settlements-event-handler-svc.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

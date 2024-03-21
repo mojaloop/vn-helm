@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "transfers-command-handler-svc.fullname" . }}
+  labels:
+    {{- include "transfers-command-handler-svc.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "transfers-command-handler-svc.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "transfers-command-handler-svc.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "transfers-command-handler-svc.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- if .Values.initContainers }}
+          {{- .Values.initContainers | nindent 8 }}
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - mountPath: /app/data
+              name: transfers-command-handler-svc-data
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: KAFKA_URL
+            value: {{ .Values.env.kafka_url }}
+          - name: KAFKA_LOGS_TOPIC
+            value: {{ .Values.env.kafka_logs_topic }}
+          - name: KAFKA_AUDITS_TOPIC
+            value: {{ .Values.env.kafka_audits_topic }}
+          - name: MONGO_URL
+            value: {{ .Values.env.mongo_url }}
+          - name: PLATFORM_CONFIG_BASE_SVC_URL
+            value: {{ .Values.env.platform_config_base_svc_url }}
+          - name: AUTH_Z_SVC_BASEURL
+            value: {{ .Values.env.auth_z_svc_baseurl }}
+          - name: AUTH_N_SVC_BASEURL
+            value: {{ .Values.env.auth_n_svc_baseurl }}
+          - name: AUTH_N_TOKEN_ISSUER_NAME
+            value: {{ .Values.env.auth_n_token_issuer_name }}
+          - name: AUTH_N_TOKEN_AUDIENCE
+            value: {{ .Values.env.auth_n_token_audience }}
+          - name: PARTICIPANTS_SVC_URL
+            value: {{ .Values.env.participants_svc_url }}
+          - name: ACCOUNTS_BALANCES_COA_SVC_URL
+            value: {{ .Values.env.account_and_balance_coa_svc }}
+          - name: SETTLEMENTS_SVC_URL
+            value: {{ .Values.env.settlements_svc_url }}
+{{- if .Values.extraEnvs | default .Values.extraEnvs }}
+{{ toYaml ( .Values.extraEnvs | default .Values.extraEnvs ) | indent 10 }}
+{{- end }}
+      volumes:
+        - name: transfers-command-handler-svc-data
+          emptyDir: {}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

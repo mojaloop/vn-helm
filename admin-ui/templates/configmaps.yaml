@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "admin-ui.fullname" . }}-nginx-conf
+data:
+  default.conf: |-
+{{ .Values.nginx.config | indent 4 }}

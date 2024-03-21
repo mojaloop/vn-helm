@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "authentication-svc.fullname" . }}
+  labels:
+    {{- include "authentication-svc.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "authentication-svc.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "authentication-svc.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "authentication-svc.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- if .Values.initContainers }}
+          {{- .Values.initContainers | nindent 8 }}
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - mountPath: /app/data
+              name: authentication-svc-data
+          ports:
+            - name: http
+              containerPort: 3201
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: KAFKA_URL
+            value: {{ .Values.env.kafka_url }}
+          - name: KAFKA_LOGS_TOPIC
+            value: {{ .Values.env.kafka_logs_topic }}
+          - name: KAFKA_AUDITS_TOPIC
+            value: {{ .Values.env.kafka_audits_topic }}
+          - name: AUTH_N_TOKEN_LIFE_SECS
+            value: {{ quote .Values.env.auth_n_token_life_secs}}
+          - name: AUTH_N_DEFAULT_AUDIENCE
+            value: {{ .Values.env.auth_n_default_audience }}
+          - name: AUTH_N_ISSUER_NAME
+            value: {{ .Values.env.auth_n_issuer_name }}
+          - name: PLATFORM_CONFIG_BASE_SVC_URL
+            value: {{ .Values.env.platform_config_base_svc_url }}
+{{- if .Values.extraEnvs | default .Values.extraEnvs }}
+{{ toYaml ( .Values.extraEnvs | default .Values.extraEnvs ) | indent 10 }}
+{{- end }}
+      volumes:
+        - name: authentication-svc-data
+          emptyDir: {}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

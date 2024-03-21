@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "authorization-svc.fullname" . }}-test-connection"
+  labels:
+    {{- include "authorization-svc.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "authorization-svc.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

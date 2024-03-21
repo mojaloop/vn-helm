@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "logging-svc.fullname" . }}
+  labels:
+    {{- include "logging-svc.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "logging-svc.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "logging-svc.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "logging-svc.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- if .Values.initContainers }}
+          {{- .Values.initContainers | nindent 8 }}
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - mountPath: /app/data
+              name: logging-svc-data
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: KAFKA_URL
+            value: {{ .Values.env.kafka_url }}
+          - name: KAFKA_LOGS_TOPIC
+            value: {{ .Values.env.kafka_logs_topic }}
+          - name: KAFKA_AUDITS_TOPIC
+            value: {{ .Values.env.kafka_audits_topic }}
+          - name: ELASTICSEARCH_URL
+            value: {{ .Values.env.elasticsearch_url }}
+          - name: ELASTICSEARCH_AUDITS_INDEX
+            value: {{ .Values.env.elasticsearch_audits_index }}
+          - name: ELASTICSEARCH_USERNAME
+            value: {{ .Values.env.elasticsearch_username }}
+          - name: ELASTICSEARCH_PASSWORD
+            value: {{ .Values.env.elasticsearch_password }}
+          - name: AUDIT_KEY_FILE_PATH
+            value: {{ .Values.env.audit_key_file_path}}
+{{- if .Values.extraEnvs | default .Values.extraEnvs }}
+{{ toYaml ( .Values.extraEnvs | default .Values.extraEnvs ) | indent 10 }}
+{{- end }}
+      volumes:
+        - name: logging-svc-data
+          emptyDir: {}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

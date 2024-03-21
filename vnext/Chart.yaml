@@ -1,0 +1,110 @@
+apiVersion: v2
+name: vnext
+description: vNext Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
+home: http://mojaloop.io
+icon: http://mojaloop.io/images/logo.png
+sources:
+  - https://github.com/mojaloop/vn-helm
+maintainers:
+  - name: Pye Phyoe Aung
+    email: pye.aung@thitsaworks.com
+  - name: Pyae Phyo Hein
+    email: pyaephyo.hein@thitsaworks.com
+dependencies:
+  - name: account-lookup-http-oracle-svc
+    version: ">= 0.1.0"
+    repository: "file://../account-lookup-http-oracle-svc"
+    condition: account-lookup-http-oracle-svc.enabled
+  - name: account-lookup-svc
+    version: ">= 0.1.0"
+    repository: "file://../account-lookup-svc"
+    condition: account-lookup-svc.enabled
+  - name: accounts-and-balances-builtin-ledger-grpc-svc
+    version: ">= 0.1.0"
+    repository: "file://../accounts-and-balances-builtin-ledger-grpc-svc"
+    condition: accounts-and-balances-builtin-ledger-grpc-svc.enabled
+  - name: accounts-and-balances-coa-grpc-svc
+    version: ">= 0.1.0"
+    repository: "file://../accounts-and-balances-coa-grpc-svc"
+    condition: accounts-and-balances-coa-grpc-svc.enabled
+  - name: admin-ui
+    version: ">= 0.1.0"
+    repository: "file://../admin-ui"
+    condition: admin-ui.enabled
+  - name: auditing-svc
+    version: ">= 0.1.0"
+    repository: "file://../auditing-svc"
+    condition: auditing-svc.enabled
+  - name: authentication-svc
+    version: ">= 0.1.0"
+    repository: "file://../authentication-svc"
+    condition: authentication-svc.enabled
+  - name: authorization-svc
+    version: ">= 0.1.0"
+    repository: "file://../authorization-svc"
+    condition: authorization-svc.enabled
+  - name: fspiop-api-svc
+    version: ">= 0.1.0"
+    repository: "file://../fspiop-api-svc"
+    condition: fspiop-api-svc.enabled
+  - name: logging-svc
+    version: ">= 0.1.0"
+    repository: "file://../logging-svc"
+    condition: logging-svc.enabled
+  - name: participants-svc
+    version: ">= 0.1.0"
+    repository: "file://../participants-svc"
+    condition: participants-svc.enabled
+  - name: platform-configuration-svc
+    version: ">= 0.1.0"
+    repository: "file://../platform-configuration-svc"
+    condition: platform-configuration-svc.enabled
+  - name: quoting-svc
+    version: ">= 0.1.0"
+    repository: "file://../quoting-svc"
+    condition: quoting-svc.enabled
+  - name: settlements-api-svc
+    version: ">= 0.1.0"
+    repository: "file://../settlements-api-svc"
+    condition: settlements-api-svc.enabled
+  - name: settlements-command-handler-svc
+    version: ">= 0.1.0"
+    repository: "file://../settlements-command-handler-svc"
+    condition: settlements-command-handler-svc.enabled
+  - name: settlements-event-handler-svc
+    version: ">= 0.1.0"
+    repository: "file://../settlements-event-handler-svc"
+    condition: settlements-event-handler-svc.enabled
+  - name: transfers-api-svc
+    version: ">= 0.1.0"
+    repository: "file://../transfers-api-svc"
+    condition: transfers-api-svc.enabled
+  - name: transfers-command-handler-svc
+    version: ">= 0.1.0"
+    repository: "file://../transfers-command-handler-svc"
+    condition: transfers-command-handler-svc.enabled
+  - name: transfers-event-handler-svc
+    version: ">= 0.1.0"
+    repository: "file://../transfers-event-handler-svc"
+    condition: transfers-event-handler-svc.enabled                       

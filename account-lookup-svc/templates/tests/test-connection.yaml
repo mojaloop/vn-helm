@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "account-lookup-svc.fullname" . }}-test-connection"
+  labels:
+    {{- include "account-lookup-svc.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "account-lookup-svc.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
