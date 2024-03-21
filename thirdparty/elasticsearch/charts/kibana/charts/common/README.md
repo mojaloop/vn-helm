@@ -206,7 +206,7 @@ enabled:
   description: Whether enable persistence.
   example: true
 
-storageClass:
+storageClass:""
   type: string
   description: Ghost data Persistent Volume Storage Class, If set to "-", storageClassName: "" which disables dynamic provisioning.
   example: "-"

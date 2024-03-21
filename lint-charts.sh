@@ -42,7 +42,6 @@ else
         thirdparty/mongo-express
         thirdparty/mongodb
         thirdparty/redis
-        thirdparty/longhorn
     )
 fi
 

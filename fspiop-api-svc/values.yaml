@@ -42,7 +42,7 @@ service:
 
 ingress:
   enabled: true
-  className: nginx-ext
+  className: nginx
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     nginx.ingress.kubernetes.io/whitelist-source-range: 0.0.0.0/0

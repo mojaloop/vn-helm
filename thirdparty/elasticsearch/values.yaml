@@ -710,7 +710,7 @@ master:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: longhorn
+    storageClass: ""
     ## @param master.persistence.existingClaim Existing Persistent Volume Claim
     ## then accept the value as an existing Persistent Volume Claim to which
     ## the container should be bound
@@ -1005,7 +1005,7 @@ data:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: longhorn
+    storageClass: ""
     ## @param data.persistence.existingClaim Existing Persistent Volume Claim
     ## then accept the value as an existing Persistent Volume Claim to which
     ## the container should be bound
@@ -2231,10 +2231,10 @@ kibana:
   ingress:
     enabled: false
     ingressClassName: nginx
-    hostname: elk-dev.vnext.wynepayhub-pre.io
+    hostname: elk.localhost
   persistence:
     enabled: true
-    storageClass: longhorn
+    storageClass: ""
   savedObjects:
     urls: 
       - https://raw.githubusercontent.com/mojaloop/platform-shared-tools/main/packages/deployment/docker-compose-infra/kibana-objects.ndjson

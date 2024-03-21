@@ -11,7 +11,6 @@ Deployment Instructions
 2. Clone the repo in your local
 3. Deploy the thirdparty charts one by one
    cd vn-helm
-   helm install longhorn thirdparty/longhorn -n longhorn-system --create-namespace
    helm install elasticsearch thirdparty/elasticsearch -n monitoring --create-namespace
    helm install console thirdparty/console -n mojaloop --create-namespace
    helm install kafka thirdparty/kafka -n mojaloop
