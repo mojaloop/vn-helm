@@ -93,13 +93,13 @@ env:
   kafka_logs_topic: logs
   kafka_audits_topic: audits
   mongo_url: mongodb://root:mongodb@mongodb:27017
-  platform_config_base_svc_url: http://$release_name-platform-configuration-svc:3100
+  platform_config_base_svc_url: http://{{ .Release.Name }}-platform-configuration-svc:3100
   elasticsearch_url: http://elasticsearch.monitoring.svc.cluster.local:9200
-  auth_z_svc_baseurl: http://$release_name-authorization-svc:3202
-  auth_n_svc_baseurl: http://$release_name-authentication-svc:3201
+  auth_z_svc_baseurl: http://{{ .Release.Name }}-authorization-svc:3202
+  auth_n_svc_baseurl: http://{{ .Release.Name }}-authentication-svc:3201
   auth_n_token_issuer_name: mojaloop.vnext.dev.default_issuer
   auth_n_token_audience: mojaloop.vnext.dev.default_audience
-  participants_svc_url: http://$release_name-participants-svc:3010
+  participants_svc_url: http://{{ .Release.Name }}-participants-svc:3010
   redis_host: redis-master
   redis_port: 6379
   builtin_ledger_svc_url: accounts-and-balances-builtin-ledger-grpc-svc:3350
@@ -114,13 +114,13 @@ extraEnvs: {}
 # - name: MONGO_URL
 #   value: mongodb://root:mongodb@mongodb:27017
 # - name: PLATFORM_CONFIG_BASE_SVC_URL
-#   value: http://$release_name-platform-configuration-svc:3100
+#   value: http://{{ .Release.Name }}-platform-configuration-svc:3100
 # - name: ELASTICSEARCH_URL
 #   value: http://elasticsearch.monitoring.svc.cluster.local:9200
 # - name: AUTH_Z_SVC_BASEURL
-#   value: http://$release_name-authorization-svc:3202
+#   value: http://{{ .Release.Name }}-authorization-svc:3202
 # - name: AUTH_N_SVC_BASEURL
-#   value: http://$release_name-authentication-svc:3201
+#   value: http://{{ .Release.Name }}-authentication-svc:3201
 # - name: AUTH_N_TOKEN_ISSUER_NAME
 #   value: mojaloop.vnext.dev.default_issuer
 # - name: AUTH_N_TOKEN_AUDIENCE
@@ -154,4 +154,4 @@ initContainers: |
         echo platform-configuration-svc ok!;
     env:
       - name: PLATFORM_CONFIG_BASE_SVC_URL
-        value: http://$release_name-platform-configuration-svc:3100
+        value: http://{{ .Release.Name }}-platform-configuration-svc:3100

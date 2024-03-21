@@ -93,8 +93,8 @@ env:
   kafka_url: kafka:9092
   kafka_logs_topic: logs
   kafka_audits_topic: audits
-  auth_z_svc_baseurl: http://$release_name-authorization-svc:3202
-  auth_n_svc_baseurl: http://$release_name-authentication-svc:3201
+  auth_z_svc_baseurl: http://{{ .Release.Name }}-authorization-svc:3202
+  auth_n_svc_baseurl: http://{{ .Release.Name }}-authentication-svc:3201
 
 extraEnvs: {}
 # - name: KAFKA_URL
@@ -104,9 +104,9 @@ extraEnvs: {}
 # - name: KAFKA_AUDITS_TOPIC
 #   value: audits
 # - name: AUTH_Z_SVC_BASEURL
-#   value: http://$release_name-authorization-svc:3202
+#   value: http://{{ .Release.Name }}-authorization-svc:3202
 # - name: AUTH_N_SVC_BASEURL
-#   value: http://$release_name-authentication-svc:3201
+#   value: http://{{ .Release.Name }}-authentication-svc:3201
 
 initContainers: |
   - name: wait-for-kafka
@@ -144,7 +144,7 @@ initContainers: |
         echo AUTH_Z_SVC_BASEURL ok!;
     env:
       - name: AUTH_Z_SVC_BASEURL
-        value: http://$release_name-authorization-svc:3202
+        value: http://{{ .Release.Name }}-authorization-svc:3202
 
   - name: wait-for-auth-n-svc
     image: curlimages/curl:8.3.0
@@ -163,4 +163,4 @@ initContainers: |
         echo AUTH_N_SVC_BASEURL ok!;
     env:
       - name: AUTH_N_SVC_BASEURL
-        value: http://$release_name-authentication-svc:3201
+        value: http://{{ .Release.Name }}-authentication-svc:3201

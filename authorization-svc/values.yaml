@@ -94,7 +94,7 @@ env:
   kafka_url: kafka:9092
   kafka_logs_topic: logs
   kafka_audits_topic: audits
-  platform_config_base_svc_url: http://$release_name-platform-configuration-svc:3100
+  platform_config_base_svc_url: http://{{ .Release.Name }}-platform-configuration-svc:3100
 
 extraEnvs: {}
 # - name: KAFKA_URL
@@ -104,7 +104,7 @@ extraEnvs: {}
 # - name: KAFKA_AUDITS_TOPIC
 #   value: audits
 # - name: PLATFORM_CONFIG_BASE_SVC_URL
-#   value: http://$release_name-platform-configuration-svc:3100
+#   value: http://{{ .Release.Name }}-platform-configuration-svc:3100
 
 
 initContainers: |

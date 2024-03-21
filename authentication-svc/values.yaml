@@ -96,7 +96,7 @@ env:
   auth_n_token_life_secs: 604800
   auth_n_default_audience: mojaloop.vnext.dev.default_audience
   auth_n_issuer_name: mojaloop.vnext.dev.default_issuer
-  platform_config_base_svc_url: http://$release_name-platform-configuration-svc:3100
+  platform_config_base_svc_url: http://{{ .Release.Name }}-platform-configuration-svc:3100
 
 
 extraEnvs: {}
@@ -113,7 +113,7 @@ extraEnvs: {}
 # - name: AUTH_N_ISSUER_NAME
 #   value: mojaloop.vnext.dev.default_issuer
 # - name: PLATFORM_CONFIG_BASE_SVC_URL
-#   value: http://$release_name-platform-configuration-svc:3100
+#   value: http://{{ .Release.Name }}-platform-configuration-svc:3100
 
 
 initContainers: |
