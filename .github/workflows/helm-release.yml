@@ -20,10 +20,10 @@ jobs:
     - name: Publish Helm chart
       uses: stefanprodan/helm-gh-pages@master
       with:
-        token: ${{ secrets.TOKEN }}
-        charts_dir: charts
+        token: ${{ secrets.GITHUB_TOKEN }}
+        charts_dir: .
         charts_url: ./
-        owner: thitsax
+        owner: mojaloop
         branch: gh-pages
         linting: off
         chart_version: ${{ env.app_release_version }}
