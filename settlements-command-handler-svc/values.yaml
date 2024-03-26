@@ -97,16 +97,7 @@ env:
   participants_svc_url: http://participants-svc:3010
   account_and_balance_coa_svc: accounts-and-balances-coa-grpc-svc:3300
 
-extraEnvs:
-  - name: mongo_url
-    {{- if .Values.config.mongo_url_secret }}
-    valueFrom:
-      secretKeyRef:
-        name: '{{ .Values.config.mongo_url_secret.name }}'
-        key: '{{ .Values.config.mongo_url_secret.key }}'
-    {{- else }}
-    value: {{ .Values.config.mongo_url }}
-    {{- end }}
+extraEnvs: {}
 # - name: KAFKA_URL
 #   value: kafka:9092
 # - name: KAFKA_LOGS_TOPIC

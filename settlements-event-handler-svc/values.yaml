@@ -96,16 +96,7 @@ env:
   auth_n_token_audience: mojaloop.vnext.dev.default_audience
   participants_svc_url: http://participants-svc:3010
 
-extraEnvs:
-  - name: mongo_url
-    {{- if .Values.config.mongo_url_secret }}
-    valueFrom:
-      secretKeyRef:
-        name: '{{ .Values.config.mongo_url_secret.name }}'
-        key: '{{ .Values.config.mongo_url_secret.key }}'
-    {{- else }}
-    value: {{ .Values.config.mongo_url }}
-    {{- end }}
+extraEnvs: {}
 #   - name: KAFKA_URL
 #     value: kafka:9092
 #   - name: KAFKA_LOGS_TOPIC
