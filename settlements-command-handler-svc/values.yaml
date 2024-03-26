@@ -1,7 +1,14 @@
 # Default values for settlements-command-handler-svc.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
+#general config params
+config:
+  mongo_url: mongodb://root:mongodb@mongodb:27017
+  # db_secret:
+  ### Example config for an existing secret
+  # mongo_url_secret:
+  #   name: mongo-secret
+  #   key: password
 replicaCount: 1
 
 image:
@@ -46,8 +53,8 @@ ingress:
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-  - host: chart-example.local
-    paths: []
+    - host: chart-example.local
+      paths: []
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -78,12 +85,10 @@ tolerations: []
 
 affinity: {}
 
-
 env:
   kafka_url: kafka:9092
   kafka_logs_topic: logs
   kafka_audits_topic: audits
-  mongo_url: mongodb://root:mongodb@mongodb:27017
   platform_config_base_svc_url: http://platform-configuration-svc:3100
   auth_z_svc_baseurl: http://authorization-svc:3202
   auth_n_svc_baseurl: http://authentication-svc:3201
@@ -92,7 +97,16 @@ env:
   participants_svc_url: http://participants-svc:3010
   account_and_balance_coa_svc: accounts-and-balances-coa-grpc-svc:3300
 
-extraEnvs: {}
+extraEnvs:
+  - name: mongo_url
+    {{- if .Values.config.mongo_url_secret }}
+    valueFrom:
+      secretKeyRef:
+        name: '{{ .Values.config.mongo_url_secret.name }}'
+        key: '{{ .Values.config.mongo_url_secret.key }}'
+    {{- else }}
+    value: {{ .Values.config.mongo_url }}
+    {{- end }}
 # - name: KAFKA_URL
 #   value: kafka:9092
 # - name: KAFKA_LOGS_TOPIC
@@ -115,7 +129,6 @@ extraEnvs: {}
 #   value: http://participants-svc:3010
 # - name: ACCOUNTS_BALANCES_COA_SVC_URL
 #   value: accounts-and-balances-coa-grpc-svc:3300
-
 
 initContainers: |
   - name: wait-for-platform-configuration-svc
