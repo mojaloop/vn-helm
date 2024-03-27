@@ -3,6 +3,16 @@ entries:
   account-lookup-http-oracle-svc:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2024-03-27T12:12:30.639051723Z"
+    description: A Helm chart for Kubernetes
+    digest: 3d59d5d4e0bb5199ee7baec64d26e6522a5b7f1b6b6ec768538a5b42e3677dea
+    name: account-lookup-http-oracle-svc
+    type: application
+    urls:
+    - account-lookup-http-oracle-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2024-03-27T12:02:47.818138941Z"
     description: A Helm chart for Kubernetes
     digest: 9394ac99cc234e6eb9bec075a6ce52877bc547004fa448721b27c2a6f8de9a78
@@ -72,6 +82,16 @@ entries:
     - account-lookup-http-oracle-svc-0.0.2.tgz
     version: 0.0.2
   account-lookup-svc:
+  - apiVersion: v2
+    appVersion: 0.1.13
+    created: "2024-03-27T12:12:30.639516694Z"
+    description: A Helm chart for Kubernetes
+    digest: d6f2e03c4852dd28fc118fdbae8e243c993636adbbec9cdbf9120e15235634cb
+    name: account-lookup-svc
+    type: application
+    urls:
+    - account-lookup-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 0.1.13
     created: "2024-03-27T12:02:47.818617333Z"
@@ -145,6 +165,16 @@ entries:
   accounts-and-balances-builtin-ledger-grpc-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.640027551Z"
+    description: A Helm chart for Kubernetes
+    digest: 3567681a01a1b8ddeb930b2b9181a4028a4e7e3761cd8d2c4571278ff1d7ea50
+    name: accounts-and-balances-builtin-ledger-grpc-svc
+    type: application
+    urls:
+    - accounts-and-balances-builtin-ledger-grpc-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.819118879Z"
     description: A Helm chart for Kubernetes
     digest: b978b1c9d4c0dcdcce291fb5e7062dd65c31ce2ae6ddb3299d085d491a75f9a0
@@ -214,6 +244,16 @@ entries:
     - accounts-and-balances-builtin-ledger-grpc-svc-0.0.2.tgz
     version: 0.0.2
   accounts-and-balances-coa-grpc-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.640544218Z"
+    description: A Helm chart for Kubernetes
+    digest: 5bf1c0592528c24dab350e2e78a58457d2f4b0880fb189f42ad933a1e336b6f7
+    name: accounts-and-balances-coa-grpc-svc
+    type: application
+    urls:
+    - accounts-and-balances-coa-grpc-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.819581663Z"
@@ -287,6 +327,16 @@ entries:
   admin-ui:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.640971308Z"
+    description: A Helm chart for Kubernetes
+    digest: 120f13cadda833c2d185e5a0495921f2c655060cb08a8be26bf9d555cbc0e7b0
+    name: admin-ui
+    type: application
+    urls:
+    - admin-ui-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.820009711Z"
     description: A Helm chart for Kubernetes
     digest: 9eafa9697db0710c5dbb3fbda4e8d513c3a0eb54e86003ede3c73ba3cf91c3be
@@ -356,6 +406,16 @@ entries:
     - admin-ui-0.0.2.tgz
     version: 0.0.2
   auditing-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.641355878Z"
+    description: A Helm chart for Kubernetes
+    digest: 9f4506f7547758287cacb3795bf56500bb7da5c16e613421bec742292a71e927
+    name: auditing-svc
+    type: application
+    urls:
+    - auditing-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.820376856Z"
@@ -429,6 +489,16 @@ entries:
   authentication-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.641767549Z"
+    description: A Helm chart for Kubernetes
+    digest: 41672f3448addc94cc221fb1475e083be952dbe3741c4bebf213f27ae71c7fda
+    name: authentication-svc
+    type: application
+    urls:
+    - authentication-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.820777875Z"
     description: A Helm chart for Kubernetes
     digest: b06759cd3585664354b662133b2a793a8ea2bec2895935c40e00c10c4ae3f891
@@ -498,6 +568,16 @@ entries:
     - authentication-svc-0.0.2.tgz
     version: 0.0.2
   authorization-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.642152801Z"
+    description: A Helm chart for Kubernetes
+    digest: 4524e7cb5d55bb339204a40eb1dc12cffffe60b84e7fb2a08a9c316059630afd
+    name: authorization-svc
+    type: application
+    urls:
+    - authorization-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.821209309Z"
@@ -571,6 +651,16 @@ entries:
   fspiop-api-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.642804411Z"
+    description: A Helm chart for Kubernetes
+    digest: 9110781967ab59ed7dd20cc778a59627da3e33b6820c9b83b557da85eb494eb3
+    name: fspiop-api-svc
+    type: application
+    urls:
+    - fspiop-api-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.821677623Z"
     description: A Helm chart for Kubernetes
     digest: f97de48a4e1472a6437c4d81e32e3819037176f92e2cd3f887b0b41755907c93
@@ -640,6 +730,16 @@ entries:
     - fspiop-api-svc-0.0.2.tgz
     version: 0.0.2
   logging-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.64319388Z"
+    description: A Helm chart for Kubernetes
+    digest: 939a804b7376b5c351dbaf559e04006c4ad54a993193a471d2e1f9d501c0ea0f
+    name: logging-svc
+    type: application
+    urls:
+    - logging-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.822117504Z"
@@ -713,6 +813,16 @@ entries:
   participants-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.643618676Z"
+    description: A Helm chart for Kubernetes
+    digest: bfc83bb2327d94e229791eb4cc4ce7ef243fc7207089c6692e533cafc6f4c025
+    name: participants-svc
+    type: application
+    urls:
+    - participants-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.822692937Z"
     description: A Helm chart for Kubernetes
     digest: 151a0f9e1709979298c9426d8f2b3e44d19a7adfd4dadb514469229145ff90cf
@@ -782,6 +892,16 @@ entries:
     - participants-svc-0.0.2.tgz
     version: 0.0.2
   platform-configuration-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.644014116Z"
+    description: A Helm chart for Kubernetes
+    digest: e41eb43e6620e3701cb33fb4da5db4e4d6b46e201b715582efccba137a4bac5c
+    name: platform-configuration-svc
+    type: application
+    urls:
+    - platform-configuration-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.823222495Z"
@@ -855,6 +975,16 @@ entries:
   quoting-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.644430727Z"
+    description: A Helm chart for Kubernetes
+    digest: 8bf5ed2be53d26ec99d17d075560403c12fc7fb78b701016e8347c7475267033
+    name: quoting-svc
+    type: application
+    urls:
+    - quoting-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.823784834Z"
     description: A Helm chart for Kubernetes
     digest: 8e72a0e99a9bf2a718f532463c1df005676a6e23cc3ad631864561f7c84775cd
@@ -924,6 +1054,16 @@ entries:
     - quoting-svc-0.0.2.tgz
     version: 0.0.2
   settlements-api-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.644842578Z"
+    description: A Helm chart for Kubernetes
+    digest: 6a2fa376a5ee79eea8a99b3ac70037d02981f09b97a480f1662f23ded7616da0
+    name: settlements-api-svc
+    type: application
+    urls:
+    - settlements-api-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.824333608Z"
@@ -997,6 +1137,16 @@ entries:
   settlements-command-handler-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.64561274Z"
+    description: A Helm chart for Kubernetes
+    digest: e8120d29fa3ff90a268403fc6f6a975c85da3263d1af19bf4f0c364fda94106b
+    name: settlements-command-handler-svc
+    type: application
+    urls:
+    - settlements-command-handler-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.8255835Z"
     description: A Helm chart for Kubernetes
     digest: 7bf8d5ba85cf9252a4b85f712f2e62318ce773b23928cb440ccafb4e630ca831
@@ -1066,6 +1216,16 @@ entries:
     - settlements-command-handler-svc-0.0.2.tgz
     version: 0.0.2
   settlements-event-handler-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.64655139Z"
+    description: A Helm chart for Kubernetes
+    digest: 9a2a6cf08c9c7583db4a5cca8ebc3be21fdbbc712b776aff54553149a7a65232
+    name: settlements-event-handler-svc
+    type: application
+    urls:
+    - settlements-event-handler-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.82611411Z"
@@ -1139,6 +1299,16 @@ entries:
   transfers-api-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.647051527Z"
+    description: A Helm chart for Kubernetes
+    digest: 625f2990c22167ac4fee3780ef972906e12f34a0de3f70f4c07bb0dd935bbe5f
+    name: transfers-api-svc
+    type: application
+    urls:
+    - transfers-api-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.826545856Z"
     description: A Helm chart for Kubernetes
     digest: 29f581e017b493784b8135a29a46b1e2067384039cf8ac82f2690acca23dec39
@@ -1208,6 +1378,16 @@ entries:
     - transfers-api-svc-0.0.2.tgz
     version: 0.0.2
   transfers-command-handler-svc:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.647486311Z"
+    description: A Helm chart for Kubernetes
+    digest: 80eca79570391b3a016c195284c6a3821d9296caade2bc30fb4790b9c0768d9e
+    name: transfers-command-handler-svc
+    type: application
+    urls:
+    - transfers-command-handler-svc-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.826974756Z"
@@ -1281,6 +1461,16 @@ entries:
   transfers-event-handler-svc:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.647885117Z"
+    description: A Helm chart for Kubernetes
+    digest: 7d57140fa146795c68b74bda620a893b18b2547f09fa0c190307b379c610f705
+    name: transfers-event-handler-svc
+    type: application
+    urls:
+    - transfers-event-handler-svc-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-27T12:02:47.827369001Z"
     description: A Helm chart for Kubernetes
     digest: 6ec896657cd7dde3662777e8938ff66dbe913ec7405fe421bea8ee5f11241348
@@ -1350,6 +1540,102 @@ entries:
     - transfers-event-handler-svc-0.0.2.tgz
     version: 0.0.2
   vnext:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-03-27T12:12:30.654819084Z"
+    dependencies:
+    - condition: account-lookup-http-oracle-svc.enabled
+      name: account-lookup-http-oracle-svc
+      repository: file://../account-lookup-http-oracle-svc
+      version: '>= 0.1.0'
+    - condition: account-lookup-svc.enabled
+      name: account-lookup-svc
+      repository: file://../account-lookup-svc
+      version: '>= 0.1.0'
+    - condition: accounts-and-balances-builtin-ledger-grpc-svc.enabled
+      name: accounts-and-balances-builtin-ledger-grpc-svc
+      repository: file://../accounts-and-balances-builtin-ledger-grpc-svc
+      version: '>= 0.1.0'
+    - condition: accounts-and-balances-coa-grpc-svc.enabled
+      name: accounts-and-balances-coa-grpc-svc
+      repository: file://../accounts-and-balances-coa-grpc-svc
+      version: '>= 0.1.0'
+    - condition: admin-ui.enabled
+      name: admin-ui
+      repository: file://../admin-ui
+      version: '>= 0.1.0'
+    - condition: auditing-svc.enabled
+      name: auditing-svc
+      repository: file://../auditing-svc
+      version: '>= 0.1.0'
+    - condition: authentication-svc.enabled
+      name: authentication-svc
+      repository: file://../authentication-svc
+      version: '>= 0.1.0'
+    - condition: authorization-svc.enabled
+      name: authorization-svc
+      repository: file://../authorization-svc
+      version: '>= 0.1.0'
+    - condition: fspiop-api-svc.enabled
+      name: fspiop-api-svc
+      repository: file://../fspiop-api-svc
+      version: '>= 0.1.0'
+    - condition: logging-svc.enabled
+      name: logging-svc
+      repository: file://../logging-svc
+      version: '>= 0.1.0'
+    - condition: participants-svc.enabled
+      name: participants-svc
+      repository: file://../participants-svc
+      version: '>= 0.1.0'
+    - condition: platform-configuration-svc.enabled
+      name: platform-configuration-svc
+      repository: file://../platform-configuration-svc
+      version: '>= 0.1.0'
+    - condition: quoting-svc.enabled
+      name: quoting-svc
+      repository: file://../quoting-svc
+      version: '>= 0.1.0'
+    - condition: settlements-api-svc.enabled
+      name: settlements-api-svc
+      repository: file://../settlements-api-svc
+      version: '>= 0.1.0'
+    - condition: settlements-command-handler-svc.enabled
+      name: settlements-command-handler-svc
+      repository: file://../settlements-command-handler-svc
+      version: '>= 0.1.0'
+    - condition: settlements-event-handler-svc.enabled
+      name: settlements-event-handler-svc
+      repository: file://../settlements-event-handler-svc
+      version: '>= 0.1.0'
+    - condition: transfers-api-svc.enabled
+      name: transfers-api-svc
+      repository: file://../transfers-api-svc
+      version: '>= 0.1.0'
+    - condition: transfers-command-handler-svc.enabled
+      name: transfers-command-handler-svc
+      repository: file://../transfers-command-handler-svc
+      version: '>= 0.1.0'
+    - condition: transfers-event-handler-svc.enabled
+      name: transfers-event-handler-svc
+      repository: file://../transfers-event-handler-svc
+      version: '>= 0.1.0'
+    description: vNext Helm chart for Kubernetes
+    digest: 9e8e51d0ab0420934db6013366cad47ee3ce042cad219beb8ed64c242464d8c3
+    home: http://mojaloop.io
+    icon: http://mojaloop.io/images/logo.png
+    maintainers:
+    - email: pye.aung@thitsaworks.com
+      name: Pye Phyoe Aung
+    - email: pyaephyo.hein@thitsaworks.com
+      name: Pyae Phyo Hein
+    name: vnext
+    sources:
+    - https://github.com/mojaloop/vn-helm
+    type: application
+    urls:
+    - vnext-0.0.10.tgz
+    version: 0.0.10
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-03-27T12:02:47.834520491Z"
@@ -2022,4 +2308,4 @@ entries:
     urls:
     - vnext-0.0.2.tgz
     version: 0.0.2
-generated: "2024-03-27T12:02:47.817295122Z"
+generated: "2024-03-27T12:12:30.638418197Z"
