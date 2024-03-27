@@ -156,10 +156,14 @@ initContainers: |
         echo MongoDB ok!;
     env:
       - name: MONGO_URL
+        {{- if .Values.config.mongo_url_secret }}
         valueFrom:
           secretKeyRef:
             name: '{{ .Values.config.mongo_url_secret.name }}'
             key: '{{ .Values.config.mongo_url_secret.key }}'
+        {{- else }}
+        value: '{{ .Values.config.mongo_url }}'
+        {{- end }}
 
   - name: wait-for-platform-configuration-svc
     image: curlimages/curl:8.3.0
