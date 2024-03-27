@@ -142,4 +142,4 @@ initContainers: |
         echo settlements-api-svc ok!;
     env:
       - name: SETTLEMENTS_SVC_URL
-        value: http://settlements-api-svc:3600
+        value: '{{ .Values.env.settlements_svc_url }}'

@@ -134,4 +134,4 @@ initContainers: |
         echo participants-svc ok!;
     env:
       - name: PARTICIPANTS_SVC_URL
-        value: http://participants-svc:3010
+        value: '{{ .Values.env.participants_svc_url }}'
