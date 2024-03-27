@@ -64,7 +64,7 @@ spec:
                 name: '{{ .Values.config.mongo_url_secret.name }}'
                 key: '{{ .Values.config.mongo_url_secret.key }}'
             {{- else }}
-            value: {{ .Values.config.mongo_url }}
+            value: '{{ .Values.config.mongo_url }}'
             {{- end }}
           - name: PLATFORM_CONFIG_BASE_SVC_URL
             value: {{ .Values.env.platform_config_base_svc_url }}
