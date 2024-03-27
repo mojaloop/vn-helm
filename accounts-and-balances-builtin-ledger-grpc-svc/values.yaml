@@ -4,11 +4,10 @@
 #general config params
 config:
   mongo_url: mongodb://root:mongodb@mongodb:27017
-  # db_secret:
   ### Example config for an existing secret
-  # mongo_url_secret:
-  #   name: mongo-secret
-  #   key: password
+  mongo_url_secret:
+    name: mongo-secret
+    key: password
 replicaCount: 1
 
 image:
@@ -156,15 +155,11 @@ initContainers: |
         echo ====================;
         echo MongoDB ok!;
     env:
-      - name: mongo_url
-        {{- if .Values.config.mongo_url_secret }}
+      - name: MONGO_URL
         valueFrom:
           secretKeyRef:
             name: '{{ .Values.config.mongo_url_secret.name }}'
             key: '{{ .Values.config.mongo_url_secret.key }}'
-        {{- else }}
-        value: {{ .Values.config.mongo_url }}
-        {{- end }}
 
   - name: wait-for-platform-configuration-svc
     image: curlimages/curl:8.3.0
