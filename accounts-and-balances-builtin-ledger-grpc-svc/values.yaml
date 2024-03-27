@@ -4,11 +4,10 @@
 #general config params
 config:
   mongo_url: mongodb://root:mongodb@mongodb:27017
-  # db_secret:
   ### Example config for an existing secret
-  # mongo_url_secret:
-  #   name: mongo-secret
-  #   key: password
+  mongo_url_secret:
+    name: mongo-secret
+    key: password
 replicaCount: 1
 
 image:
@@ -109,16 +108,7 @@ env:
   redis_host: redis-master
   redis_port: 6379
 
-extraEnvs:
-  - name: mongo_url
-    {{- if .Values.config.mongo_url_secret }}
-    valueFrom:
-      secretKeyRef:
-        name: '{{ .Values.config.mongo_url_secret.name }}'
-        key: '{{ .Values.config.mongo_url_secret.key }}'
-    {{- else }}
-    value: {{ .Values.config.mongo_url }}
-    {{- end }}
+extraEnvs: {}
 # - name: KAFKA_URL
 #   value: kafka:9092
 # - name: KAFKA_LOGS_TOPIC
@@ -165,14 +155,14 @@ initContainers: |
         echo ====================;
         echo MongoDB ok!;
     env:
-      - name: mongo_url
+      - name: MONGO_URL
         {{- if .Values.config.mongo_url_secret }}
         valueFrom:
           secretKeyRef:
             name: '{{ .Values.config.mongo_url_secret.name }}'
             key: '{{ .Values.config.mongo_url_secret.key }}'
         {{- else }}
-        value: {{ .Values.config.mongo_url }}
+        value: '{{ .Values.config.mongo_url }}'
         {{- end }}
 
   - name: wait-for-platform-configuration-svc
@@ -192,7 +182,7 @@ initContainers: |
         echo platform-configuration-svc ok!;
     env:
       - name: PLATFORM_CONFIG_BASE_SVC_URL
-        value: http://platform-configuration-svc:3100
+        value: '{{ .Values.env.platform_config_base_svc_url }}'
 
 
   - name: wait-for-redis
@@ -210,9 +200,8 @@ initContainers: |
         done;
         echo ====================;
         echo redis-service ok!;
-
     env:
       - name: REDIS_HOST
-        value: redis-master
+        value: '{{ .Values.env.redis_host }}'
       - name: REDIS_PORT
-        value: "6379"
+        value: '{{ .Values.env.redis_port }}'

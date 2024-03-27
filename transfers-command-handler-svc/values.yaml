@@ -98,16 +98,7 @@ env:
   account_and_balance_coa_svc: accounts-and-balances-coa-grpc-svc:3300
   settlements_svc_url: http://settlements-api-svc:3600
 
-extraEnvs:
-  - name: mongo_url
-    {{- if .Values.config.mongo_url_secret }}
-    valueFrom:
-      secretKeyRef:
-        name: '{{ .Values.config.mongo_url_secret.name }}'
-        key: '{{ .Values.config.mongo_url_secret.key }}'
-    {{- else }}
-    value: {{ .Values.config.mongo_url }}
-    {{- end }}
+extraEnvs: {}
 # - name: KAFKA_URL
 #   value: kafka:9092
 # - name: KAFKA_LOGS_TOPIC
@@ -151,4 +142,4 @@ initContainers: |
         echo settlements-api-svc ok!;
     env:
       - name: SETTLEMENTS_SVC_URL
-        value: http://settlements-api-svc:3600
+        value: '{{ .Values.env.settlements_svc_url }}'

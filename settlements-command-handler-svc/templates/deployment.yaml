@@ -29,7 +29,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         {{- if .Values.initContainers }}
-          {{- .Values.initContainers | nindent 8 }}
+          {{- include "tplvalues.render" (dict "value" .Values.initContainers "context" $) | nindent 8 }}
         {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -62,7 +62,14 @@ spec:
           - name: KAFKA_AUDITS_TOPIC
             value: {{ .Values.env.kafka_audits_topic }}
           - name: MONGO_URL
-            value: {{ .Values.env.mongo_url }}
+            {{- if .Values.config.mongo_url_secret }}
+            valueFrom:
+              secretKeyRef:
+                name: '{{ .Values.config.mongo_url_secret.name }}'
+                key: '{{ .Values.config.mongo_url_secret.key }}'
+            {{- else }}
+            value: '{{ .Values.config.mongo_url }}'
+            {{- end }}
           - name: PLATFORM_CONFIG_BASE_SVC_URL
             value: {{ .Values.env.platform_config_base_svc_url }}
           - name: AUTH_Z_SVC_BASEURL
