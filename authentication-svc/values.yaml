@@ -46,8 +46,8 @@ ingress:
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-  - host: chart-example.local
-    paths: []
+    - host: chart-example.local
+      paths: []
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -98,7 +98,6 @@ env:
   auth_n_issuer_name: mojaloop.vnext.dev.default_issuer
   platform_config_base_svc_url: http://platform-configuration-svc:3100
 
-
 extraEnvs: {}
 # - name: KAFKA_URL
 #   value: kafka:9092
@@ -114,7 +113,6 @@ extraEnvs: {}
 #   value: mojaloop.vnext.dev.default_issuer
 # - name: PLATFORM_CONFIG_BASE_SVC_URL
 #   value: http://platform-configuration-svc:3100
-
 
 initContainers: |
   - name: wait-for-kafka
@@ -133,4 +131,4 @@ initContainers: |
         echo Kafka ok!;
     env:
       - name: KAFKA_URL
-        value: kafka:9092
+        value: '{{ .Values.env.kafka_url }}'
