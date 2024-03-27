@@ -200,9 +200,8 @@ initContainers: |
         done;
         echo ====================;
         echo redis-service ok!;
-
     env:
       - name: REDIS_HOST
         value: '{{ .Values.env.redis_host }}'
       - name: REDIS_PORT
-         value: '{{ .Values.env.redis_port }}'
+        value: '{{ .Values.env.redis_port }}'
