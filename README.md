@@ -16,7 +16,7 @@ Deployment Instructions
    helm install console thirdparty/console -n mojaloop --create-namespace
    helm install kafka thirdparty/kafka -n mojaloop
    helm install mongodb thirdparty/mongodb -n mojaloop
-   helm install mongoexpress thirdparty/mongoexpress -n mojaloop
+   helm install mongoexpress thirdparty/mongo-express -n mojaloop
    helm install redis thirdparty/redis -n mojaloop
 4. Deploy the vnext charts 
    helm dep up vnext/
